@@ -1,0 +1,52 @@
+{
+  "elapsedTime": "0",
+  "count": 2,
+  "data": [
+    {
+      "typeCode": "C",
+      "freqCode": "A",
+      "refPeriodId": 202301,
+      "period": "2023",
+      "reporterCode": 842,
+      "reporterDesc": "USA",
+      "flowCode": "M",
+      "flowDesc": "Import",
+      "partnerCode": 156,
+      "partnerDesc": "China",
+      "cmdCode": "85",
+      "cmdDesc": "Electrical machinery",
+      "customsCode": "C00",
+      "motCode": "0",
+      "primaryValue": 125000000,
+      "netWgt": 1000,
+      "qty": 50,
+      "qtyUnitAbbr": "N/A",
+      "refYear": 2023,
+      "aggrLevel": 2,
+      "isLeaf": false
+    },
+    {
+      "typeCode": "C",
+      "freqCode": "A",
+      "refPeriodId": 202301,
+      "period": "2023",
+      "reporterCode": 842,
+      "reporterDesc": "USA",
+      "flowCode": "X",
+      "flowDesc": "Export",
+      "partnerCode": 276,
+      "partnerDesc": "Germany",
+      "cmdCode": "0851",
+      "cmdDesc": "Synthetic leading-zero HS fixture",
+      "customsCode": "C00",
+      "motCode": "0",
+      "primaryValue": 44000000,
+      "netWgt": 200,
+      "qty": 10,
+      "qtyUnitAbbr": "N/A",
+      "refYear": 2023,
+      "aggrLevel": 4,
+      "isLeaf": true
+    }
+  ]
+}

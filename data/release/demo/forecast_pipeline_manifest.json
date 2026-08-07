@@ -1,0 +1,28 @@
+{
+  "engine_version": "1.0.0-phase12",
+  "generated_at": "2026-07-29T17:21:48Z",
+  "data_mode": "fixture_synthetic",
+  "data_source": "synthetic_offline_fixtures",
+  "is_fixture": true,
+  "production_forecast_available": false,
+  "live_monthly_successful_requests": 0,
+  "fixture_accuracy_disclaimer": "Fixture metrics are offline synthetic diagnostics only and must not be described as production accuracy.",
+  "mape_claim_below_15": false,
+  "outputs": {
+    "candidates": "data/processed/monthly_trade_candidates.parquet",
+    "monthly_long": "data/processed/monthly_trade_long.parquet",
+    "quality": "data/processed/monthly_series_quality.parquet",
+    "selected": "data/processed/forecast_selected_series.parquet",
+    "backtests": "data/processed/forecast_backtest_predictions.parquet",
+    "metrics": "data/processed/forecast_model_metrics.parquet",
+    "selected_models": "data/processed/forecast_selected_models.parquet",
+    "forecasts": "data/processed/forecast_predictions.parquet",
+    "residuals": "data/processed/forecast_residual_diagnostics.parquet",
+    "validation": "data/processed/phase12_validation_results.parquet"
+  },
+  "prophet_available": true,
+  "stable_selected_count": 10,
+  "production_status": "partial",
+  "contains_credentials": false,
+  "replaces_prior_forecast_state": true
+}

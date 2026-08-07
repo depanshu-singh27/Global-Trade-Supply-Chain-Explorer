@@ -1,0 +1,7 @@
+# Copy this file to .Renviron and set your own key:
+#   copy .Renviron.example .Renviron
+#
+# Never commit .Renviron. Obtain a key from:
+#   https://comtradedeveloper.un.org/
+
+COMTRADE_PRIMARY=your_comtrade_subscription_key_here

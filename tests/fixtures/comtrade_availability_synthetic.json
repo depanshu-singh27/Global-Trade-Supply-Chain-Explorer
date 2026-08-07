@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "period": "2023",
+      "reporterCode": 842,
+      "reporterISO": "USA",
+      "reporterDesc": "USA",
+      "classificationCode": "H6",
+      "classificationSearchCode": "HS",
+      "totalRecords": 10,
+      "firstReleased": "2024-01-01T00:00:00",
+      "lastReleased": "2024-06-01T00:00:00"
+    },
+    {
+      "period": "2023",
+      "reporterCode": 156,
+      "reporterISO": "CHN",
+      "reporterDesc": "China",
+      "classificationCode": "H6",
+      "classificationSearchCode": "HS",
+      "totalRecords": 12,
+      "firstReleased": "2024-01-01T00:00:00",
+      "lastReleased": "2024-06-01T00:00:00"
+    }
+  ]
+}

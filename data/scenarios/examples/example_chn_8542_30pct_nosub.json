@@ -1,0 +1,20 @@
+{
+  "scenario_id": "example_chn_8542_30pct_nosub",
+  "scenario_name": "CHN HS8542 30% no substitution control",
+  "scenario_description": "Control scenario: same CHN–8542 30% reduction with substitution_mode=none. Residual unmet equals direct disruption. Not a forecast.",
+  "baseline_year_start": 2019,
+  "baseline_year_end": 2023,
+  "target_supplier_iso3": ["CHN"],
+  "target_hs_codes": ["8542"],
+  "target_reporter_iso3": [],
+  "shock_type": "commodity_specific_supplier_reduction",
+  "shock_size_pct": 30,
+  "substitution_mode": "none",
+  "substitution_capacity_pct": 0,
+  "maximum_substitute_supplier_share": 1,
+  "propagation_mode": "direct_only",
+  "acknowledge_partial_coverage": true,
+  "include_macro_normalisation": true,
+  "universe_version": "uv_262deb46e00d2f216a5a",
+  "engine_version": "1.0.0-phase10"
+}

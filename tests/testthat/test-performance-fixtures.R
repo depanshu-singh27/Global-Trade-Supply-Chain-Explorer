@@ -1,0 +1,23 @@
+test_that("deterministic fixture generation and labelling", {
+  cfg1 <- make_tiny_perf_cfg(synthetic_seed = 11L)
+  cfg2 <- make_tiny_perf_cfg(synthetic_seed = 11L)
+  cfg3 <- make_tiny_perf_cfg(synthetic_seed = 99L)
+  a <- generate_performance_detailed_fixture(cfg1)
+  b <- generate_performance_detailed_fixture(cfg2)
+  c <- generate_performance_detailed_fixture(cfg3)
+  expect_equal(nrow(a), nrow(b))
+  expect_equal(attr(a, "fixture_checksum"), attr(b, "fixture_checksum"))
+  expect_false(identical(attr(a, "fixture_checksum"), attr(c, "fixture_checksum")))
+  expect_true(all(a$is_synthetic))
+  expect_equal(unique(a$dataset_mode), "synthetic_scaled")
+  expect_false(any(grepl(paste0("COMTRADE", "_", "PRIMARY"), paste(unlist(a), collapse = " "))))
+  expect_false(any(grepl("[A-Za-z]:\\\\Users\\\\|/Users/", paste(names(a), collapse = " "))))
+})
+
+test_that("config validation rejects bad iterations and paths", {
+  expect_error(validate_performance_config(list(iterations = 0, warmup_iterations = 0, synthetic_active_nodes = 10, output_root = "data/performance")), regexp = "iterations")
+  expect_error(validate_performance_config(list(iterations = 1, warmup_iterations = 0, synthetic_active_nodes = 9999, output_root = "data/performance")), regexp = "synthetic_active_nodes")
+  expect_error(validate_performance_config(list(iterations = 1, warmup_iterations = 0, synthetic_active_nodes = 10, output_root = "C:/Users/secret")), regexp = "Unsafe|output_root")
+  cfg <- make_tiny_perf_cfg()
+  expect_equal(cfg$fixture_version, PERF_FIXTURE_VERSION)
+})

@@ -1,0 +1,20 @@
+{
+  "scenario_id": "example_deu_chn_8542_50pct",
+  "scenario_name": "DEU–CHN HS8542 bilateral 50% reduction",
+  "scenario_description": "Reporter-specific bilateral reduction: DEU imports from CHN for HS4 8542 cut by 50% with capacity-constrained substitution. Baseline years limited to available DEU observations. Not a forecast.",
+  "baseline_year_start": 2019,
+  "baseline_year_end": 2022,
+  "target_supplier_iso3": ["CHN"],
+  "target_hs_codes": ["8542"],
+  "target_reporter_iso3": ["DEU"],
+  "shock_type": "reporter_specific_bilateral_reduction",
+  "shock_size_pct": 50,
+  "substitution_mode": "capacity_constrained",
+  "substitution_capacity_pct": 25,
+  "maximum_substitute_supplier_share": 1,
+  "propagation_mode": "direct_only",
+  "acknowledge_partial_coverage": true,
+  "include_macro_normalisation": true,
+  "universe_version": "uv_262deb46e00d2f216a5a",
+  "engine_version": "1.0.0-phase10"
+}

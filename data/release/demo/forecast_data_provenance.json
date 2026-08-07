@@ -1,0 +1,9 @@
+{
+  "data_mode": "fixture_synthetic",
+  "data_source": "synthetic_offline_fixtures",
+  "is_fixture": true,
+  "production_forecast_available": false,
+  "live_monthly_successful_requests": 0,
+  "written_at": "2026-07-29T17:21:48Z",
+  "replaces_prior_mode": true
+}

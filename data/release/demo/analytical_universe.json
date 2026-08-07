@@ -1,0 +1,559 @@
+{
+  "top_reporters": [
+    {
+      "rank": 1,
+      "reporter_code": "156",
+      "reporter_iso3": "CHN",
+      "reporter_name": "China",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 1445125584802,
+      "imports_value_usd": 548706963322,
+      "exports_value_usd": 896418621480,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 2,
+      "reporter_code": "344",
+      "reporter_iso3": "HKG",
+      "reporter_name": "China, Hong Kong SAR",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 679785590718.2671,
+      "imports_value_usd": 344286808565.718,
+      "exports_value_usd": 335498782152.549,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 3,
+      "reporter_code": "842",
+      "reporter_iso3": "USA",
+      "reporter_name": "USA",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 664018233513,
+      "imports_value_usd": 463363545006,
+      "exports_value_usd": 200654688507,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 4,
+      "reporter_code": "276",
+      "reporter_iso3": "DEU",
+      "reporter_name": "Germany",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 419719034899.847,
+      "imports_value_usd": 225454085888.285,
+      "exports_value_usd": 194264949011.562,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 5,
+      "reporter_code": "702",
+      "reporter_iso3": "SGP",
+      "reporter_name": "Singapore",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 293032882559.22,
+      "imports_value_usd": 131335269977.063,
+      "exports_value_usd": 161697612582.157,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 6,
+      "reporter_code": "410",
+      "reporter_iso3": "KOR",
+      "reporter_name": "Rep. of Korea",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 290779656188,
+      "imports_value_usd": 119478238633,
+      "exports_value_usd": 171301417555,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 7,
+      "reporter_code": "704",
+      "reporter_iso3": "VNM",
+      "reporter_name": "Viet Nam",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 245433703337.155,
+      "imports_value_usd": 112715383989.812,
+      "exports_value_usd": 132718319347.343,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 8,
+      "reporter_code": "484",
+      "reporter_iso3": "MEX",
+      "reporter_name": "Mexico",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 224836683958,
+      "imports_value_usd": 121428652288,
+      "exports_value_usd": 103408031670,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 9,
+      "reporter_code": "392",
+      "reporter_iso3": "JPN",
+      "reporter_name": "Japan",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 216974840512.627,
+      "imports_value_usd": 115086540478.1,
+      "exports_value_usd": 101888300034.527,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 10,
+      "reporter_code": "458",
+      "reporter_iso3": "MYS",
+      "reporter_name": "Malaysia",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 191845663140.45,
+      "imports_value_usd": 72803707902.424,
+      "exports_value_usd": 119041955238.026,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 11,
+      "reporter_code": "528",
+      "reporter_iso3": "NLD",
+      "reporter_name": "Netherlands",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 138456808969.493,
+      "imports_value_usd": 74654196195.277,
+      "exports_value_usd": 63802612774.216,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 12,
+      "reporter_code": "251",
+      "reporter_iso3": "FRA",
+      "reporter_name": "France",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 121026583946.461,
+      "imports_value_usd": 70714588254.296,
+      "exports_value_usd": 50311995692.165,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 13,
+      "reporter_code": "764",
+      "reporter_iso3": "THA",
+      "reporter_name": "Thailand",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 108643121813.854,
+      "imports_value_usd": 58648792608.32,
+      "exports_value_usd": 49994329205.534,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 14,
+      "reporter_code": "699",
+      "reporter_iso3": "IND",
+      "reporter_name": "India",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 108381669977.393,
+      "imports_value_usd": 76063435331.401,
+      "exports_value_usd": 32318234645.992,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 15,
+      "reporter_code": "784",
+      "reporter_iso3": "ARE",
+      "reporter_name": "United Arab Emirates",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 105329145541.132,
+      "imports_value_usd": 63051480332.63,
+      "exports_value_usd": 42277665208.502,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 16,
+      "reporter_code": "203",
+      "reporter_iso3": "CZE",
+      "reporter_name": "Czechia",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 104390643572,
+      "imports_value_usd": 52330892524,
+      "exports_value_usd": 52059751048,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 17,
+      "reporter_code": "826",
+      "reporter_iso3": "GBR",
+      "reporter_name": "United Kingdom",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 102470125332.414,
+      "imports_value_usd": 73999316944.082,
+      "exports_value_usd": 28470808388.332,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 18,
+      "reporter_code": "380",
+      "reporter_iso3": "ITA",
+      "reporter_name": "Italy",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 100587828029.089,
+      "imports_value_usd": 55876155569.459,
+      "exports_value_usd": 44711672459.63,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 19,
+      "reporter_code": "616",
+      "reporter_iso3": "POL",
+      "reporter_name": "Poland",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 95197834813,
+      "imports_value_usd": 46041984685,
+      "exports_value_usd": 49155850128,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 20,
+      "reporter_code": "348",
+      "reporter_iso3": "HUN",
+      "reporter_name": "Hungary",
+      "reporter_entity_type": "country_or_economy",
+      "score_value_usd": 73246858668.359,
+      "imports_value_usd": 31829023247.582,
+      "exports_value_usd": 41417835420.777,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    }
+  ],
+  "top_partners": [
+    {
+      "rank": 1,
+      "partner_code": "156",
+      "partner_iso3": "CHN",
+      "partner_name": "China",
+      "score_value_usd": 1289470855875.4199,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 2,
+      "partner_code": "842",
+      "partner_iso3": "USA",
+      "partner_name": "USA",
+      "score_value_usd": 499797226958.7609,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 3,
+      "partner_code": "410",
+      "partner_iso3": "KOR",
+      "partner_name": "Rep. of Korea",
+      "score_value_usd": 297700562551.0021,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 4,
+      "partner_code": "704",
+      "partner_iso3": "VNM",
+      "partner_name": "Viet Nam",
+      "score_value_usd": 279876965924.348,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 5,
+      "partner_code": "344",
+      "partner_iso3": "HKG",
+      "partner_name": "China, Hong Kong SAR",
+      "score_value_usd": 262473492908.728,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 6,
+      "partner_code": "276",
+      "partner_iso3": "DEU",
+      "partner_name": "Germany",
+      "score_value_usd": 223469269037.908,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 7,
+      "partner_code": "392",
+      "partner_iso3": "JPN",
+      "partner_name": "Japan",
+      "score_value_usd": 215063704830.776,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 8,
+      "partner_code": "484",
+      "partner_iso3": "MEX",
+      "partner_name": "Mexico",
+      "score_value_usd": 196425603748.541,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 9,
+      "partner_code": "458",
+      "partner_iso3": "MYS",
+      "partner_name": "Malaysia",
+      "score_value_usd": 187318992305.834,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 10,
+      "partner_code": "702",
+      "partner_iso3": "SGP",
+      "partner_name": "Singapore",
+      "score_value_usd": 129833782640.449,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 11,
+      "partner_code": "764",
+      "partner_iso3": "THA",
+      "partner_name": "Thailand",
+      "score_value_usd": 113509556481.238,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 12,
+      "partner_code": "528",
+      "partner_iso3": "NLD",
+      "partner_name": "Netherlands",
+      "score_value_usd": 111330124625.148,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 13,
+      "partner_code": "699",
+      "partner_iso3": "IND",
+      "partner_name": "India",
+      "score_value_usd": 108048305832.687,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 14,
+      "partner_code": "251",
+      "partner_iso3": "FRA",
+      "partner_name": "France",
+      "score_value_usd": 71717523248.688,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 15,
+      "partner_code": "826",
+      "partner_iso3": "GBR",
+      "partner_name": "United Kingdom",
+      "score_value_usd": 66947360574.55,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 16,
+      "partner_code": "616",
+      "partner_iso3": "POL",
+      "partner_name": "Poland",
+      "score_value_usd": 66502418053.68,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 17,
+      "partner_code": "124",
+      "partner_iso3": "CAN",
+      "partner_name": "Canada",
+      "score_value_usd": 60831928823.533,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 18,
+      "partner_code": "380",
+      "partner_iso3": "ITA",
+      "partner_name": "Italy",
+      "score_value_usd": 60727318094.465,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 19,
+      "partner_code": "203",
+      "partner_iso3": "CZE",
+      "partner_name": "Czechia",
+      "score_value_usd": 56230424077.507,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "rank": 20,
+      "partner_code": "348",
+      "partner_iso3": "HUN",
+      "partner_name": "Hungary",
+      "score_value_usd": 53474470133.296,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    }
+  ],
+  "top_hs4": [
+    {
+      "hs_code": "8542",
+      "commodity_description": "Electronic integrated circuits",
+      "score_value_usd": 905581452016.313,
+      "hs_rank": 1,
+      "rank": 1,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8517",
+      "commodity_description": "Telephone sets, including smartphones and other telephones for cellular/wireless networks; other apparatus for the transmission or reception of voice, images or other data (including wired/wireless networks), excluding items of 8443, 8525, 8527, or 8528",
+      "score_value_usd": 801887763767.229,
+      "hs_rank": 2,
+      "rank": 2,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8507",
+      "commodity_description": "Electric accumulators, including separators therefor; whether or not rectangular (including square)",
+      "score_value_usd": 218483828216.5219,
+      "hs_rank": 3,
+      "rank": 3,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8504",
+      "commodity_description": "Electric transformers, static converters (e.g. rectifiers) and inductors",
+      "score_value_usd": 184061798691.2052,
+      "hs_rank": 4,
+      "rank": 4,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8541",
+      "commodity_description": "Semiconductor devices (e.g. diodes, transistors, semiconductor based transducers); including photovoltaic cells assembled or not in modules or panels, light-emitting diodes (LED) assembled with other LEDs or not, mounted piezo-electric crystals",
+      "score_value_usd": 174936371933.406,
+      "hs_rank": 5,
+      "rank": 5,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8524",
+      "commodity_description": "Flat panel display modules, whether or not incorporating touch-sensitive screens",
+      "score_value_usd": 155487100726.598,
+      "hs_rank": 6,
+      "rank": 6,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8536",
+      "commodity_description": "Electrical apparatus for switching, protecting electrical circuits, for making connections to or in electrical circuits, for a voltage not exceeding 1000 volts; connectors for optical fibres, optical fibre bundles or cables",
+      "score_value_usd": 146952368365.0501,
+      "hs_rank": 7,
+      "rank": 7,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8544",
+      "commodity_description": "Insulated wire, cable and other electric conductors, connector fitted or not; optical fibre cables of individually sheathed fibres, whether or not assembled with electric conductors or fitted with connectors",
+      "score_value_usd": 114904334616.361,
+      "hs_rank": 8,
+      "rank": 8,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8528",
+      "commodity_description": "Monitors and projectors, not incorporating television reception apparatus; reception apparatus for television, whether or not incorporating radio-broadcast receivers or sound or video recording or reproducing apparatus",
+      "score_value_usd": 99786164041.267,
+      "hs_rank": 9,
+      "rank": 9,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8537",
+      "commodity_description": "Boards, panels, consoles, desks, cabinets, bases with apparatus of heading no. 8535, 8536 for electricity control and distribution, (other than switching apparatus of heading no. 8517)",
+      "score_value_usd": 94203786093.0311,
+      "hs_rank": 10,
+      "rank": 10,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8529",
+      "commodity_description": "Transmission apparatus; parts suitable for use solely or principally with the apparatus of heading no. 8524 to 8528",
+      "score_value_usd": 82590332289.971,
+      "hs_rank": 11,
+      "rank": 11,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8501",
+      "commodity_description": "Electric motors and generators (excluding generating sets)",
+      "score_value_usd": 80797908387.7519,
+      "hs_rank": 12,
+      "rank": 12,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8534",
+      "commodity_description": "Circuits; printed",
+      "score_value_usd": 69888485345.9531,
+      "hs_rank": 13,
+      "rank": 13,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8523",
+      "commodity_description": "Discs, tapes, solid-state non-volatile storage devices, smart cards and other media for the recording of sound or of other phenomena, whether or not recorded, including matrices and masters for the production of discs, excluding products of Chapter 37",
+      "score_value_usd": 69002551140.674,
+      "hs_rank": 14,
+      "rank": 14,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8516",
+      "commodity_description": "Electric water, space, soil heaters; electro-thermic hair-dressing apparatus; hand dryers, irons; electro-thermic appliances for domestic purposes; electro heating resistors, not of heading no. 8545",
+      "score_value_usd": 67717680347.273,
+      "hs_rank": 15,
+      "rank": 15,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8518",
+      "commodity_description": "Microphones and their stands; loudspeakers, mounted or not in their enclosures; headphones and earphones, combined or not with a microphone, and sets of a microphone and one or more loudspeakers; audio-frequency and electric sound amplifiers and sets",
+      "score_value_usd": 67460141334.8979,
+      "hs_rank": 16,
+      "rank": 16,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8525",
+      "commodity_description": "Transmission apparatus for radio-broadcasting or television, whether or not incorporating reception apparatus or sound recording or reproducing apparatus; television cameras, digital cameras and video camera recorders",
+      "score_value_usd": 62777780852.119,
+      "hs_rank": 17,
+      "rank": 17,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8543",
+      "commodity_description": "Electrical machines and apparatus; having individual functions, not specified or included elsewhere in this chapter",
+      "score_value_usd": 51788538331.587,
+      "hs_rank": 18,
+      "rank": 18,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8532",
+      "commodity_description": "Electrical capacitors; fixed, variable or adjustable (pre-set)",
+      "score_value_usd": 49681031702.652,
+      "hs_rank": 19,
+      "rank": 19,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    },
+    {
+      "hs_code": "8538",
+      "commodity_description": "Electrical apparatus; parts suitable for use solely or principally with the apparatus of heading no. 8535, 8536 and 8537",
+      "score_value_usd": 43812721884.87,
+      "hs_rank": 20,
+      "rank": 20,
+      "universe_checksum": "uv_262deb46e00d2f216a5a"
+    }
+  ],
+  "universe_checksum": "uv_262deb46e00d2f216a5a",
+  "universe_version": "uv_262deb46e00d2f216a5a",
+  "selection_methodology": {
+    "ranking_year": 2023,
+    "classification_path": "HS",
+    "reporter_score": "imports+exports with World partner; metadata-eligible country_or_economy only; tie-break ISO3 then code",
+    "partner_score": "bilateral trade with top reporters; exclude World/aggregates/unspecified; HS4 discovery via cmdCode=85*",
+    "hs4_score": "sum of trade on HS4 codes beginning with 85 among selected reporter-partner pairs; tie-break by hs_code",
+    "reporter_eligibility": "source isGroup/aggregate metadata primary; defensive denylist EUR,WLD,W00,ASE"
+  },
+  "generated_at": "2026-07-29T10:45:01Z"
+}

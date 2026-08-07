@@ -1,0 +1,10 @@
+{
+  "status": "ok",
+  "app": "global-trade-supply-chain-explorer",
+  "version": "0.1.0-rc.14",
+  "profile": "demo",
+  "public_mode": true,
+  "read_only": true,
+  "scenario_writes": false,
+  "timestamp": "2026-07-29T20:20:13Z"
+}

@@ -1,0 +1,20 @@
+{
+  "scenario_id": "example_chn_allhs_20pct",
+  "scenario_name": "CHN all selected HS4 20% reduction",
+  "scenario_description": "Analytical stress test: 20% reduction in observed imports from CHN across selected HS4 codes with capacity-constrained substitution. Not a forecast.",
+  "baseline_year_start": 2019,
+  "baseline_year_end": 2023,
+  "target_supplier_iso3": ["CHN"],
+  "target_hs_codes": [],
+  "target_reporter_iso3": [],
+  "shock_type": "supplier_export_reduction",
+  "shock_size_pct": 20,
+  "substitution_mode": "capacity_constrained",
+  "substitution_capacity_pct": 25,
+  "maximum_substitute_supplier_share": 1,
+  "propagation_mode": "direct_only",
+  "acknowledge_partial_coverage": true,
+  "include_macro_normalisation": true,
+  "universe_version": "uv_262deb46e00d2f216a5a",
+  "engine_version": "1.0.0-phase10"
+}

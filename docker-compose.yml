@@ -1,0 +1,114 @@
+services:
+  gtsc-demo:
+    profiles: ["demo"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gtsc:phase14-rc
+    container_name: gtsc-demo
+    user: "10001:10001"
+    env_file:
+      - path: docker/runtime.env.example
+        required: false
+    environment:
+      GTSC_RUNTIME_PROFILE: demo
+      GTSC_PUBLIC_MODE: "true"
+      GTSC_ALLOW_SCENARIO_WRITES: "false"
+      GTSC_READ_ONLY_MODE: "true"
+      GTSC_DATA_ROOT: /opt/gtsc/app/data/release/demo
+      GTSC_SCENARIO_ROOT: /opt/gtsc/scenarios
+      TMPDIR: /tmp/gtsc
+    ports:
+      - "3838:3838"
+    read_only: true
+    tmpfs:
+      - /tmp/gtsc:size=256m,mode=1777
+    volumes:
+      - gtsc_scenarios_demo:/opt/gtsc/scenarios
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/opt/gtsc/healthcheck.sh"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 4G
+
+  gtsc-release:
+    profiles: ["release"]
+    image: gtsc:phase14-rc
+    container_name: gtsc-release
+    user: "10001:10001"
+    environment:
+      GTSC_RUNTIME_PROFILE: release
+      GTSC_PUBLIC_MODE: "true"
+      GTSC_ALLOW_SCENARIO_WRITES: "false"
+      GTSC_READ_ONLY_MODE: "true"
+      GTSC_DATA_ROOT: /opt/gtsc/data
+      GTSC_SCENARIO_ROOT: /opt/gtsc/scenarios
+      TMPDIR: /tmp/gtsc
+    ports:
+      - "3838:3838"
+    read_only: true
+    tmpfs:
+      - /tmp/gtsc:size=256m,mode=1777
+    volumes:
+      - ./data/release/current:/opt/gtsc/data:ro
+      - gtsc_scenarios_release:/opt/gtsc/scenarios
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/opt/gtsc/healthcheck.sh"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+
+  gtsc-external:
+    profiles: ["external"]
+    image: gtsc:phase14-rc
+    container_name: gtsc-external
+    user: "10001:10001"
+    environment:
+      GTSC_RUNTIME_PROFILE: external
+      GTSC_PUBLIC_MODE: "true"
+      GTSC_ALLOW_SCENARIO_WRITES: "false"
+      GTSC_READ_ONLY_MODE: "true"
+      GTSC_DATA_ROOT: /opt/gtsc/data
+      GTSC_SCENARIO_ROOT: /opt/gtsc/scenarios
+      TMPDIR: /tmp/gtsc
+    ports:
+      - "3838:3838"
+    read_only: true
+    tmpfs:
+      - /tmp/gtsc:size=256m,mode=1777
+    volumes:
+      - ${GTSC_EXTERNAL_DATA:-./data/release/current}:/opt/gtsc/data:ro
+      - gtsc_scenarios_external:/opt/gtsc/scenarios
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/opt/gtsc/healthcheck.sh"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+
+volumes:
+  gtsc_scenarios_demo:
+  gtsc_scenarios_release:
+  gtsc_scenarios_external:

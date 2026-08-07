@@ -1,0 +1,254 @@
+{
+  "release_bundle_version": "14.0.0-rc",
+  "application_version": "0.1.0-rc.14",
+  "git_head": "ef64e53906f7154df37193f32989d1c7e648b9f2",
+  "dirty_working_tree": true,
+  "generated_timestamp": "2026-08-05T09:18:08Z",
+  "runtime_profile": "demo",
+  "file_allowlist": ["analytical_universe.json", "trade_data_profile.json", "macro_data_profile.json", "production_pipeline_manifest.json", "country_year_analytics.parquet", "trade_global_hs85_annual.parquet", "trade_global_enriched.parquet", "trade_detailed_top20.parquet", "trade_detailed_enriched.parquet", "top_reporters.parquet", "top_partners.parquet", "top_hs4.parquet", "wdi_production_long.parquet", "wdi_production_wide.parquet", "macro_country_universe.parquet", "production_validation_results.parquet", "phase3_validation_results.parquet", "ne_countries_simplified.rds", "geographic_crosswalk.parquet", "monthly_trade_long.parquet", "monthly_series_quality.parquet", "monthly_trade_candidates.parquet", "forecast_selected_series.parquet", "forecast_model_metrics.parquet", "forecast_selected_models.parquet", "forecast_predictions.parquet", "forecast_backtest_predictions.parquet", "forecast_residual_diagnostics.parquet", "forecast_profile.json", "forecast_pipeline_manifest.json", "forecast_data_provenance.json", "phase12_validation_results.parquet", "release_bundle_manifest.json"],
+  "files": [
+    {
+      "path": "analytical_universe.json",
+      "size_bytes": 19492,
+      "sha256": "5091b2f0528df30ea3c59fcf710508a3b5b0393d0fbc89d025c354d71b158f72",
+      "row_count": "NA",
+      "schema_fingerprint": "json:a607485db62e3040f9af82c9b66de08660a40194c2e37d67c0b467e16478a586"
+    },
+    {
+      "path": "country_year_analytics.parquet",
+      "size_bytes": 199113,
+      "sha256": "7278c873b4e5fe60fc7d4d60e68fd07b21e469084a1fe118de407f82d6d18f05",
+      "row_count": 981,
+      "schema_fingerprint": "parquet:27:a1e41a91464b697554246c324adeb56866c831833db49f1a9f8697f3d2b162fa"
+    },
+    {
+      "path": "forecast_backtest_predictions.parquet",
+      "size_bytes": 184813,
+      "sha256": "0baf1e649c617bd488c6bb6834eea3d725d1a4f522ae0a44d1bfa368f8b469de",
+      "row_count": 2352,
+      "schema_fingerprint": "parquet:21:0246299cb56156190774112a15d3db1a832ce7f0e03258875a01ef57a23e5ca9"
+    },
+    {
+      "path": "forecast_data_provenance.json",
+      "size_bytes": 262,
+      "sha256": "74c95933571d096b3c39c86bf6710414d26c42acb5590dc1869cbeb3acad52e7",
+      "row_count": "NA",
+      "schema_fingerprint": "json:ca4fa48b340f79148367415594175d1d733e79737a5c48828362998268f40e06"
+    },
+    {
+      "path": "forecast_model_metrics.parquet",
+      "size_bytes": 15781,
+      "sha256": "530a8913f65163b7026aff70381b41f77e93be42f217a74836b8f74bd4a081ee",
+      "row_count": 151,
+      "schema_fingerprint": "parquet:17:7e65ae980c2b94f6c43c969359027df3f8061f68167d2618b2d1571a453ea1ea"
+    },
+    {
+      "path": "forecast_pipeline_manifest.json",
+      "size_bytes": 1314,
+      "sha256": "deec2a9f2880b032bdee3f815fe64dff73478a7fd555c7322a3ba88d34b17410",
+      "row_count": "NA",
+      "schema_fingerprint": "json:5ba4e44cbeb1fe1e0e7d854ee26ee69573cebc70cb9eeea59ea445e740fde0e4"
+    },
+    {
+      "path": "forecast_predictions.parquet",
+      "size_bytes": 12769,
+      "sha256": "6e0cc30b7e4c6bab5fde37645433d99f520e5f545304fdc69d8b85adf8da2807",
+      "row_count": 120,
+      "schema_fingerprint": "parquet:16:53fc5b4f5394cda183786bf06ef11d70a18e73047db9e8adf1e7d46e523fe9ce"
+    },
+    {
+      "path": "forecast_profile.json",
+      "size_bytes": 1399,
+      "sha256": "ab584fa1f212b076b39983e3e7e8a2fafbe5755940cda398452e96948487d617",
+      "row_count": "NA",
+      "schema_fingerprint": "json:8233686ccde095500490a34fdf9596f1234accfd3b9cd6ada371d160fa837c0c"
+    },
+    {
+      "path": "forecast_residual_diagnostics.parquet",
+      "size_bytes": 4866,
+      "sha256": "d3811dacc2e81ae4644ceb2ffd5e26f8021a316bcf99947d7ca69fcbd119486e",
+      "row_count": 10,
+      "schema_fingerprint": "parquet:9:6ce90215be09f6c9f910b250e2f5c479445e2b410ce738d4b118ee11a7ed1569"
+    },
+    {
+      "path": "forecast_selected_models.parquet",
+      "size_bytes": 5938,
+      "sha256": "f0bfc1a16df7b23ed38112577dcb5bbd8d18f9bd0c83e4e0f96f2d8aef727285",
+      "row_count": 10,
+      "schema_fingerprint": "parquet:12:c9d4cd542097ed588a6c7f296ffef02e4fdbf200da2594e87385f92395bcf58c"
+    },
+    {
+      "path": "forecast_selected_series.parquet",
+      "size_bytes": 10342,
+      "sha256": "0561b27a116fe8f7dbdae5edf3d0915465f4e3d4a8f5137639e3a63293a8f9fe",
+      "row_count": 10,
+      "schema_fingerprint": "parquet:23:5b75eda829b32522f3abde924095ef4ed14e48bf9e4b35a6b1c2550e345798a4"
+    },
+    {
+      "path": "geographic_crosswalk.parquet",
+      "size_bytes": 5507,
+      "sha256": "48e06292dfd23f2310440248bd21316df74b3235574a02ae0c7046b73aa34341",
+      "row_count": 234,
+      "schema_fingerprint": "parquet:6:28f0414aa41b7213f66fd8dec818cad23c1e97403ce1007d0b0873790b1ec9fb"
+    },
+    {
+      "path": "macro_country_universe.parquet",
+      "size_bytes": 9645,
+      "sha256": "803f04735a5c2b3345d8d517978314b5853f62a1ff1a39bc10f71e69aa5803e5",
+      "row_count": 177,
+      "schema_fingerprint": "parquet:12:e188f2bac67e6901b3405b1cbcaad1b7c5e2d3002028fddccef2ebec90b61a75"
+    },
+    {
+      "path": "macro_data_profile.json",
+      "size_bytes": 1435,
+      "sha256": "8bc4c0ab938d0007654fd3d0884003b62fb995ebacb56f6364560fad63ba2a82",
+      "row_count": "NA",
+      "schema_fingerprint": "json:95e4488ba6c1371bc179459d935d79360a807af474797e992367acb8564d9a8c"
+    },
+    {
+      "path": "monthly_series_quality.parquet",
+      "size_bytes": 9301,
+      "sha256": "8701f6bc7effd3502fd9f83762530508e295cda71fe65a4ef39ca46dcd462812",
+      "row_count": 12,
+      "schema_fingerprint": "parquet:20:f61ad16c2135e30639a58b2c789ee9dc96a0e378d870495ebabea863eae0b08d"
+    },
+    {
+      "path": "monthly_trade_candidates.parquet",
+      "size_bytes": 9054,
+      "sha256": "a3a22cbd6d3a4d71fd6303f17bdc4ef33eb247afa11aa09dcf9d3c21bc37147e",
+      "row_count": 12,
+      "schema_fingerprint": "parquet:21:f89e41304fc3658b4fbcd211c651d56fa46b754bd088279b196b411e5a814f14"
+    },
+    {
+      "path": "monthly_trade_long.parquet",
+      "size_bytes": 20047,
+      "sha256": "6e471af0bb8258e29f1dbd197c13539e6e8081cf5147c62594cc8f4a9473dca6",
+      "row_count": 864,
+      "schema_fingerprint": "parquet:27:8da7d924e236ccb4702bedb754dd923a6d258be2b059da30e8e0581b440f59a9"
+    },
+    {
+      "path": "ne_countries_simplified.rds",
+      "size_bytes": 808106,
+      "sha256": "c5829a9b41d498f7c41fb470319f82b6def1de35ea78c3919774bb8b402b47f2",
+      "row_count": "NA",
+      "schema_fingerprint": "rds:808106"
+    },
+    {
+      "path": "phase12_validation_results.parquet",
+      "size_bytes": 2656,
+      "sha256": "d2fa322d1d17d9fb95adb600072de31fed8228d6074eb5acc8029fa0379cf693",
+      "row_count": 10,
+      "schema_fingerprint": "parquet:4:5db4235f7afed7d222bf0b538daf1bc14aed2d53f1e70080b1661e094ee2a48d"
+    },
+    {
+      "path": "phase3_validation_results.parquet",
+      "size_bytes": 4204,
+      "sha256": "10744ff9337dbf775089a492cd3ac73e583bfc9bec555def4684df9380b1a3bd",
+      "row_count": 22,
+      "schema_fingerprint": "parquet:6:bfa17f459954d55dfa71355ad6e1d70149778167b764b9e2ec0c3a358175ec8e"
+    },
+    {
+      "path": "production_pipeline_manifest.json",
+      "size_bytes": 793,
+      "sha256": "d9d1f522962e72fff612bb1a241406d160a87156d9eae1a0e875cb37cfb7762b",
+      "row_count": "NA",
+      "schema_fingerprint": "json:cc7cf4b3b52dd1c579fde912998255eec367d70ff481ad9a5c118165342c5944"
+    },
+    {
+      "path": "production_validation_results.parquet",
+      "size_bytes": 4442,
+      "sha256": "087b1f032e9697dbc87bbaecc428e0f9622a939fb54bad668defb491843d1c30",
+      "row_count": 30,
+      "schema_fingerprint": "parquet:6:bfa17f459954d55dfa71355ad6e1d70149778167b764b9e2ec0c3a358175ec8e"
+    },
+    {
+      "path": "top_hs4.parquet",
+      "size_bytes": 5945,
+      "sha256": "e647f425abbe18d9616883fa9cd2a02c9492b6f00225ae38396881dd8937f9b7",
+      "row_count": 20,
+      "schema_fingerprint": "parquet:6:57a9006138a4341800f8d0cd1110b00b60cb07e4ad0f8377e469fdc234409499"
+    },
+    {
+      "path": "top_partners.parquet",
+      "size_bytes": 3783,
+      "sha256": "bec8d76210d15ac8d274ed652cb917f6abc039e8b6b93e9e7eb68824c7e3c332",
+      "row_count": 20,
+      "schema_fingerprint": "parquet:6:1ced6f8a55c1fcc3345dc137264818c6ac5eb41c504981b54e1e13cf399fcf16"
+    },
+    {
+      "path": "top_reporters.parquet",
+      "size_bytes": 5430,
+      "sha256": "efb4de67abc7f647995263e18fb34d6161d750706551f9bca0855292c77fb9c0",
+      "row_count": 20,
+      "schema_fingerprint": "parquet:9:37d6d38384dcea39903f4f8a93bb4e9a2cab6e75ac7cbcb8fbb8745c509f983c"
+    },
+    {
+      "path": "trade_data_profile.json",
+      "size_bytes": 1576,
+      "sha256": "409f6182cb5890304709a04818561e9b6fda4dea0fbbe0d9dbe76daaf6c855ef",
+      "row_count": "NA",
+      "schema_fingerprint": "json:c9fd3852e4e6846622adab48a365161da3c2c00276acc37cdb884fb2d51b62f7"
+    },
+    {
+      "path": "trade_detailed_enriched.parquet",
+      "size_bytes": 2060352,
+      "sha256": "9f94c719274898ea2902002c5c5ffae9024fce690c9b759539200626d7b1db0c",
+      "row_count": 87609,
+      "schema_fingerprint": "parquet:34:0b4202e52f27bdd0426775637d634da065f6302d70db41aadc8f636ba18894e3"
+    },
+    {
+      "path": "trade_detailed_top20.parquet",
+      "size_bytes": 1947277,
+      "sha256": "58919985b108e44634d45c55f9cf66a5c3a45306430990f653122d5ee0f1054a",
+      "row_count": 87609,
+      "schema_fingerprint": "parquet:23:db99e84156b88b441d913d2d14462b3e5ba50bf7a9362b2577b7b73ce1f3ea6f"
+    },
+    {
+      "path": "trade_global_enriched.parquet",
+      "size_bytes": 126420,
+      "sha256": "0bce00ad0a65e6fc58dcb7c4156f1c563fa4424d381f7c80c455971511da71da",
+      "row_count": 1955,
+      "schema_fingerprint": "parquet:29:b805ca738a871024bcaa799d01fdb49d88dc07a4b3de8959265ce4134e1e4f11"
+    },
+    {
+      "path": "trade_global_hs85_annual.parquet",
+      "size_bytes": 39347,
+      "sha256": "9db605f361c3f49662f3a7718719d50dc0248fe8782d383d5c578a5b1a3e695b",
+      "row_count": 1955,
+      "schema_fingerprint": "parquet:22:a655f5fba24f107e8c39af46122b9caf296bdf1bc87683e5c6ab48794f107989"
+    },
+    {
+      "path": "wdi_production_long.parquet",
+      "size_bytes": 46675,
+      "sha256": "9fbdfef8a8475af7c547c18cc363fcf0a20cf664a90e85b2d30732913b40af26",
+      "row_count": 4200,
+      "schema_fingerprint": "parquet:10:3b3d78102ce0ed77ff488f79280f7c684577b836bff011b5c201b9e233aaf7e2"
+    },
+    {
+      "path": "wdi_production_wide.parquet",
+      "size_bytes": 54195,
+      "sha256": "c8743141a839b88d6f78522daa643b5d1cbe48ffdbba784ab51b695f1e176c2b",
+      "row_count": 1050,
+      "schema_fingerprint": "parquet:10:68292666b0ec37b5dbfc03a7f5d55c8d027d8554e4e9deda9f1d05e6df21ed88"
+    }
+  ],
+  "data_provenance": {
+    "trade_source": "un_comtrade_processed_snapshot",
+    "forecast_source": "synthetic_offline_fixtures",
+    "macro_source": "world_bank_wdi_processed_snapshot"
+  },
+  "global_production_status": "complete",
+  "detailed_production_status": "complete",
+  "selected_reporter_count": 0,
+  "represented_reporter_count": 0,
+  "forecast_data_mode": "fixture_synthetic",
+  "production_forecast_available": false,
+  "live_monthly_successful_requests": 0,
+  "universe_checksum": "uv_262deb46e00d2f216a5a",
+  "renv_lock_checksum": "caf5a821c45e4c2d0a68929b17c9a4f940fcfdb3165406a3f515d14f9f520c7c",
+  "geometry_source": "ne_countries_simplified.rds",
+  "shock_engine_version": "1.0.0-phase10",
+  "forecast_engine_version": "1.0.0-phase12",
+  "performance_evidence_status": "not_included_in_bundle",
+  "demo_or_synthetic_label": "Demo or Synthetic Fixture Data"
+}

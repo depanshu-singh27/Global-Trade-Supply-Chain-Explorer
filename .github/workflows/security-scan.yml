@@ -1,0 +1,158 @@
+name: Security scan
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  secrets-and-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Guard — no COMTRADE assignment in tracked files
+        run: |
+          if git grep -nE '^[[:space:]]*(export[[:space:]]+)?COMTRADE_PRIMARY[[:space:]]*=' -- \
+            ':!.Renviron.example' \
+            ':!README.md' \
+            ':!tests/**' \
+            ':!.github/**'; then
+            echo "Unexpected COMTRADE_PRIMARY assignment in tracked files"
+            exit 1
+          fi
+          test ! -f .Renviron || git check-ignore -v .Renviron
+
+      - name: Dockerfile lint (Hadolint)
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          failure-threshold: warning
+        continue-on-error: true
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.6.1"
+          use-public-rspm: true
+
+      - name: Install Linux system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential \
+            cmake \
+            gdal-bin \
+            pandoc \
+            pkg-config \
+            libabsl-dev \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libgit2-dev \
+            libuv1-dev \
+            libgdal-dev \
+            libgeos-dev \
+            libproj-dev \
+            libudunits2-dev \
+            libglpk-dev \
+            libgmp-dev \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libpng-dev \
+            libtiff-dev \
+            libjpeg-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            zlib1g-dev
+
+      - name: Install renv and restore (exclude optional Prophet/Stan stack)
+        run: |
+          Rscript -e "install.packages('renv', repos='https://cloud.r-project.org')"
+          Rscript -e "renv::restore(exclude = c('prophet', 'rstan', 'rstantools', 'StanHeaders', 'RcppParallel'), prompt = FALSE)"
+
+      - name: Verify mandatory DESCRIPTION Imports
+        run: |
+          Rscript -e "
+            d <- read.dcf('DESCRIPTION')
+            imports <- if ('Imports' %in% colnames(d)) d[1, 'Imports'] else ''
+            pkgs <- trimws(unlist(strsplit(gsub('[\\r\\n]+', ',', imports), ',', fixed = TRUE)))
+            pkgs <- gsub('\\\\s*\\\\(.*\\\\)\\\\s*', '', pkgs)
+            pkgs <- pkgs[nzchar(pkgs) & !grepl('^R$', pkgs)]
+            missing <- pkgs[!vapply(pkgs, requireNamespace, quietly = TRUE, FUN.VALUE = logical(1))]
+            if (length(missing)) {
+              stop('Missing mandatory Imports: ', paste(missing, collapse = ', '), call. = FALSE)
+            }
+            message('MANDATORY_OK=', length(pkgs))
+          "
+
+      - name: Dependency inventory
+        run: |
+          Rscript -e "source('R/zzz_bootstrap.R'); source_project_r(); \
+            dir.create('data/release/inventories', recursive=TRUE, showWarnings=FALSE); \
+            write_release_inventories(); cat('INVENTORY_OK\n')"
+
+      - name: Upload dependency inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-inventory
+          path: data/release/inventories/
+
+  image-scan:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.ref_type == 'tag'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.6.1"
+          use-public-rspm: true
+
+      - name: Install Linux system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential \
+            cmake \
+            gdal-bin \
+            pandoc \
+            pkg-config \
+            libabsl-dev \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libgit2-dev \
+            libuv1-dev \
+            libgdal-dev \
+            libgeos-dev \
+            libproj-dev \
+            libudunits2-dev \
+            libglpk-dev \
+            libgmp-dev \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libpng-dev \
+            libtiff-dev \
+            libjpeg-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            zlib1g-dev
+
+      - name: Install renv and restore (exclude optional Prophet/Stan stack)
+        run: |
+          Rscript -e "install.packages('renv', repos='https://cloud.r-project.org')"
+          Rscript -e "renv::restore(exclude = c('prophet', 'rstan', 'rstantools', 'StanHeaders', 'RcppParallel'), prompt = FALSE)"
+
+      - name: Build demo image for scan
+        run: |
+          Rscript scripts/29_build_demo_bundle.R
+          docker build --tag gtsc:phase14-rc .
+
+      - name: Trivy image scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: gtsc:phase14-rc
+          format: table
+          exit-code: "0"
+          severity: CRITICAL,HIGH

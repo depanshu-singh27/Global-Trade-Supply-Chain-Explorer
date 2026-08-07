@@ -1,0 +1,5 @@
+*.sh text eol=lf
+docker/*.R text eol=lf
+data/release/demo/*.json text eol=lf
+data/release/demo/*.parquet -text
+data/release/demo/*.rds -text

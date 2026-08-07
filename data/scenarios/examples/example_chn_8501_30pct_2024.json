@@ -1,0 +1,20 @@
+{
+  "scenario_id": "example_chn_8501_30pct_2024",
+  "scenario_name": "CHN HS8501 30% reduction (2024 slice)",
+  "scenario_description": "Capacity-constrained substitution comparison on a 2024-only baseline using HS4 8501 (present in the current partial 2024 cube). Companion to multi-year 8542 examples. Not a forecast.",
+  "baseline_year_start": 2024,
+  "baseline_year_end": 2024,
+  "target_supplier_iso3": ["CHN"],
+  "target_hs_codes": ["8501"],
+  "target_reporter_iso3": [],
+  "shock_type": "commodity_specific_supplier_reduction",
+  "shock_size_pct": 30,
+  "substitution_mode": "capacity_constrained",
+  "substitution_capacity_pct": 25,
+  "maximum_substitute_supplier_share": 1,
+  "propagation_mode": "direct_only",
+  "acknowledge_partial_coverage": true,
+  "include_macro_normalisation": true,
+  "universe_version": "uv_262deb46e00d2f216a5a",
+  "engine_version": "1.0.0-phase10"
+}

@@ -1,0 +1,53 @@
+default:
+  app:
+    name: "Global Trade & Supply Chain Explorer"
+    environment: "default"
+    log_level: "INFO"
+  paths:
+    raw: "data/raw"
+    interim: "data/interim"
+    processed: "data/processed"
+    reference: "data/reference"
+    cache: "data/cache"
+  pilot:
+    start_year: 2023
+    end_year: 2024
+    hs_chapter: "85"
+    reporters: ["USA", "CHN", "DEU"]
+    partners: ["USA", "CHN", "DEU", "IND", "GBR"]
+    frequency: "A"
+    flows: ["M", "X"]
+  api:
+    timeout_seconds: 60
+    max_retries: 3
+    retry_backoff_seconds: 2
+    cache_expiry_hours: 168
+  comtrade:
+    base_url: "https://comtradeapi.un.org/data/v1/get"
+    type_code: "C"
+    classification: "HS"
+  wdi:
+    base_url: "https://api.worldbank.org/v2"
+    indicators:
+      - code: "NY.GDP.MKTP.CD"
+        name: "GDP (current US$)"
+      - code: "SP.POP.TOTL"
+        name: "Population, total"
+      - code: "FP.CPI.TOTL"
+        name: "Consumer price index (2010 = 100)"
+      - code: "FP.CPI.TOTL.ZG"
+        name: "Inflation, consumer prices (annual %)"
+
+development:
+  app:
+    environment: "development"
+    log_level: "DEBUG"
+
+production:
+  app:
+    environment: "production"
+    log_level: "WARN"
+  api:
+    timeout_seconds: 90
+    max_retries: 5
+    retry_backoff_seconds: 3

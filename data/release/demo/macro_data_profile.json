@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-08-04T11:13:23Z",
+  "country_universe_size": 175,
+  "country_count_by_source_scope": {
+    "global_reporter": 154,
+    "top_partner": 1,
+    "top_reporter": 1,
+    "top_reporter_and_partner": 19
+  },
+  "year_range": [
+    2019,
+    2024
+  ],
+  "indicator_list": [
+    "FP.CPI.TOTL",
+    "FP.CPI.TOTL.ZG",
+    "NY.GDP.MKTP.CD",
+    "SP.POP.TOTL"
+  ],
+  "wdi_long_row_count": 4200,
+  "wdi_wide_row_count": 1050,
+  "missing_values_by_indicator": {
+    "FP.CPI.TOTL": 79,
+    "FP.CPI.TOTL.ZG": 75,
+    "NY.GDP.MKTP.CD": 10,
+    "SP.POP.TOTL": 0
+  },
+  "duplicate_exact_removed": 0,
+  "conflict_rows": 0,
+  "current_detailed_production_status": "complete",
+  "universe_checksum": "uv_262deb46e00d2f216a5a",
+  "note": "CPI retained as context only; not used to invent real-USD trade",
+  "country_year_analytical_row_count": 981,
+  "global_enriched_row_count": 1955,
+  "detailed_enriched_row_count": 87609,
+  "reporter_macro_join_coverage": {
+    "expected": 981,
+    "matched": 969,
+    "coverage_pct": 98.7768
+  },
+  "partner_macro_join_coverage": {
+    "expected": 120,
+    "matched": 120,
+    "coverage_pct": 100
+  },
+  "detailed_reporter_macro_join_coverage": {
+    "expected": 118,
+    "matched": 118,
+    "coverage_pct": 100
+  },
+  "detailed_represented_reporters": ["ARE", "CHN", "CZE", "DEU", "FRA", "GBR", "HKG", "HUN", "IND", "ITA", "JPN", "KOR", "MEX", "MYS", "NLD", "POL", "SGP", "THA", "USA", "VNM"]
+}

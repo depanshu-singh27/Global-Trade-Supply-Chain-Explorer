@@ -1,0 +1,10 @@
+test_that("synthetic geometry builds and join preserves ISO3", {
+  skip_if_not_installed("sf")
+  g <- make_synthetic_map_geometry(c("DEU", "USA"))
+  expect_s3_class(g, "sf")
+  expect_equal(nrow(g), 2L)
+  expect_true(all(c("map_iso3", "region_wb") %in% names(g)))
+  xw <- build_geographic_crosswalk(c("DEU", "ZZZ"), g)
+  expect_equal(xw[source_iso3 == "DEU"]$geometry_match_status, "matched")
+  expect_equal(xw[source_iso3 == "ZZZ"]$geometry_match_status, "unmatched")
+})

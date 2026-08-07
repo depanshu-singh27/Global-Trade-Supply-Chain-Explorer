@@ -1,0 +1,40 @@
+Package: globalTradeExplorer
+Title: Global Trade & Supply Chain Explorer
+Version: 0.1.0
+Authors@R: person("Global Trade Explorer", role = c("aut", "cre"),
+                  email = "noreply@example.com")
+Description: Phase 1 foundation for an R Shiny application analysing
+    international trade and supply-chain dependencies, with UN Comtrade
+    and World Bank WDI pilot ingestion.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 4.3.0)
+Imports:
+    shiny,
+    bslib,
+    data.table,
+    plotly,
+    leaflet,
+    DT,
+    igraph,
+    networkD3,
+    arrow,
+    fst,
+    httr2,
+    jsonlite,
+    yaml,
+    memoise,
+    cachem,
+    testthat,
+    sf,
+    rnaturalearth,
+    rnaturalearthdata,
+    forecast
+Suggests:
+    renv,
+    lubridate,
+    zoo,
+    prophet
+RoxygenNote: 7.3.0

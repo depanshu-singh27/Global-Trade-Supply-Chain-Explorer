@@ -1,0 +1,11 @@
+root <- normalizePath(getwd(), winslash = "/")
+if (file.exists(file.path(root, "renv/activate.R"))) source(file.path(root, "renv/activate.R"))
+source(file.path(root, "R/zzz_bootstrap.R"))
+source_project_r(root)
+
+Sys.setenv(GTSC_RUNTIME_PROFILE = "demo")
+res <- build_demo_bundle(root = root)
+message("DEMO_BUNDLE_OK=", res$dest_dir)
+message("DEMO_FILES=", length(res$files))
+message("DEMO_PROFILE=", res$manifest$runtime_profile %||% NA)
+message("DEMO_FORECAST_MODE=", res$manifest$forecast_data_mode %||% NA)

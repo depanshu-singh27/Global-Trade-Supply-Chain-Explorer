@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-08-04T11:13:18Z",
+  "classification_path": "HS",
+  "classification_note": "Original reported classification via HS path; hs_revision stored per row",
+  "production_status": "complete",
+  "universe_version": "uv_262deb46e00d2f216a5a",
+  "status": {
+    "production_status": "complete",
+    "active_request_count": 120,
+    "terminal_request_count": 120,
+    "succeeded_request_count": 113,
+    "valid_empty_request_count": 1,
+    "skipped_cached_count": 6,
+    "planned_request_count": 0,
+    "running_request_count": 0,
+    "quota_blocked_count": 0,
+    "retryable_failed_count": 0,
+    "permanently_failed_count": 0,
+    "selected_reporter_count": 20,
+    "represented_reporter_count": 20,
+    "missing_reporters": [],
+    "universe_version": "uv_262deb46e00d2f216a5a",
+    "generated_at": "2026-08-04T11:13:18Z"
+  },
+  "trade_global": {
+    "file": "trade_global_hs85_annual.parquet",
+    "rows": 1955,
+    "cols": 22,
+    "year_range": [
+      2019,
+      2024
+    ],
+    "reporters": 177,
+    "flows": [
+      "M",
+      "X"
+    ],
+    "hs_revisions": [
+      "H2",
+      "H3",
+      "H4",
+      "H5",
+      "H6"
+    ]
+  },
+  "trade_detailed": {
+    "file": "trade_detailed_top20.parquet",
+    "rows": 87609,
+    "cols": 23,
+    "year_range": [
+      2019,
+      2024
+    ],
+    "reporters": 20,
+    "partners": 20,
+    "hs4": 20,
+    "universe_checksum": "uv_262deb46e00d2f216a5a"
+  },
+  "validation": {
+    "n_pass": 30,
+    "n_warning": 0,
+    "n_error": 0
+  },
+  "runtime_bundle_label": "Demo or Synthetic Fixture Data",
+  "demo_mode": true
+}

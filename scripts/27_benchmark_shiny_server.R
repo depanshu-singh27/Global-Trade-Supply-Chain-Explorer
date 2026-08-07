@@ -1,0 +1,12 @@
+options(shiny.autoload.r = FALSE)
+root <- getwd()
+if (file.exists("renv/activate.R")) source("renv/activate.R")
+source("R/zzz_bootstrap.R")
+source_project_r(root)
+
+cfg <- normalise_performance_config()
+app_cfg <- load_config()
+runs <- run_shiny_helper_benchmark_suite(cfg, app_cfg)
+paths <- ensure_performance_dirs(cfg)
+atomic_write_parquet_dt(runs, file.path(paths$results, paste0("shiny_", cfg$phase_label, ".parquet")))
+cat("SHINY_HELPER_BENCH_OK n=", nrow(runs), "\n", sep = "")
