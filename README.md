@@ -2,6 +2,8 @@
 
 > An interactive R Shiny platform for exploring global HS Chapter 85 trade, bilateral commodity flows, trade networks, import concentration, deterministic supply-chain shocks, and monthly forecasting workflows.
 
+**Live Application:** https://depanshu-singh.shinyapps.io/global-trade-supply-chain-explorer/
+
 ## Overview
 
 The **Global Trade & Supply Chain Explorer** is a modular analytics platform built with **R and Shiny** for exploring international trade patterns, bilateral commodity relationships, supply-chain dependencies, network structure, and disruption scenarios.
