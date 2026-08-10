@@ -126,3 +126,5 @@ www/rstudio_leaflet-*/
 www/bslib-component-js-*/
 www/bslib-component-css-*/
 www/bslib-tag-require-*/
+runtime-rds/
+shinyapps-deploy/
