@@ -136,33 +136,233 @@ dependency_trend_by_year <- function(detailed,
                                        hs_codes = NULL,
                                        year_min = 2019L,
                                        year_max = 2024L) {
-  years <- seq.int(as.integer(year_min), as.integer(year_max))
-  parts <- lapply(years, function(y) {
-    built <- construct_dependency_table(
-      detailed,
-      year_min = y, year_max = y,
-      reporters = reporters, hs_codes = hs_codes
-    )
-    if (!nrow(built$shares)) {
-      return(data.table::data.table(
-        year = y,
-        weighted_hhi = NA_real_,
-        weighted_top_1_share = NA_real_,
-        supplier_count = NA_integer_,
-        effective_supplier_count = NA_real_,
-        import_value = NA_real_
-      ))
-    }
-    gc <- add_commodity_importance(supplier_concentration_by_group(built$shares))
-    rw <- reporter_weighted_concentration(gc)
+  year_min <- as.integer(year_min)
+  year_max <- as.integer(year_max)
+  years <- seq.int(year_min, year_max)
+
+  empty_result <- function() {
     data.table::data.table(
-      year = y,
-      weighted_hhi = if (nrow(rw)) mean(rw$weighted_hhi, na.rm = TRUE) else NA_real_,
-      weighted_top_1_share = if (nrow(rw)) mean(rw$weighted_top_1_share, na.rm = TRUE) else NA_real_,
-      supplier_count = if (nrow(gc)) as.integer(round(mean(gc$supplier_count, na.rm = TRUE))) else NA_integer_,
-      effective_supplier_count = if (nrow(rw)) mean(rw$effective_supplier_count, na.rm = TRUE) else NA_real_,
-      import_value = sum(gc$reporter_commodity_total, na.rm = TRUE)
+      year = years,
+      weighted_hhi = NA_real_,
+      weighted_top_1_share = NA_real_,
+      supplier_count = NA_integer_,
+      effective_supplier_count = NA_real_,
+      import_value = NA_real_
     )
-  })
-  data.table::rbindlist(parts, fill = TRUE)
+  }
+
+  raw <- prepare_detailed_trade(detailed)
+
+  if (is.null(raw) || !nrow(raw)) {
+    return(empty_result())
+  }
+
+  dt <- raw[
+    flow_code == "M" &
+      year >= year_min &
+      year <= year_max &
+      !is.na(reporter_iso3) &
+      nzchar(reporter_iso3) &
+      !is.na(partner_iso3) &
+      nzchar(partner_iso3) &
+      reporter_iso3 != partner_iso3 &
+      !is.na(hs_code) &
+      nzchar(hs_code) &
+      is.finite(trade_value_usd) &
+      trade_value_usd > 0,
+    .(
+      year,
+      reporter_iso3,
+      partner_iso3,
+      hs_code,
+      trade_value_usd
+    )
+  ]
+
+  if (!is.null(reporters) &&
+      length(reporters) &&
+      !all(reporters %in% c("__ALL__", ""))) {
+    reps <- setdiff(as.character(reporters), c("__ALL__", ""))
+    if (length(reps)) {
+      dt <- dt[reporter_iso3 %in% reps]
+    }
+  }
+
+  if (!is.null(hs_codes) &&
+      length(hs_codes) &&
+      !all(hs_codes %in% c("__ALL__", ""))) {
+    hs <- setdiff(as.character(hs_codes), c("__ALL__", ""))
+    if (length(hs)) {
+      dt <- dt[hs_code %in% hs]
+    }
+  }
+
+  if (!nrow(dt)) {
+    return(empty_result())
+  }
+
+  links <- dt[
+    ,
+    .(
+      partner_import_value = sum(trade_value_usd, na.rm = TRUE)
+    ),
+    by = .(
+      year,
+      reporter_iso3,
+      partner_iso3,
+      hs_code
+    )
+  ]
+
+  links <- links[
+    is.finite(partner_import_value) &
+      partner_import_value > 0
+  ]
+
+  if (!nrow(links)) {
+    return(empty_result())
+  }
+
+  links[
+    ,
+    reporter_commodity_total :=
+      sum(partner_import_value, na.rm = TRUE),
+    by = .(
+      year,
+      reporter_iso3,
+      hs_code
+    )
+  ]
+
+  links[
+    ,
+    partner_share :=
+      partner_import_value / reporter_commodity_total
+  ]
+
+  groups <- links[
+    is.finite(partner_share) &
+      partner_share > 0,
+    .(
+      reporter_commodity_total = reporter_commodity_total[1L],
+      supplier_count = .N,
+      top_1_share = max(partner_share, na.rm = TRUE),
+      supplier_hhi = sum(partner_share^2, na.rm = TRUE)
+    ),
+    by = .(
+      year,
+      reporter_iso3,
+      hs_code
+    )
+  ]
+
+  groups[
+    ,
+    reporter_total_imports :=
+      sum(reporter_commodity_total, na.rm = TRUE),
+    by = .(
+      year,
+      reporter_iso3
+    )
+  ]
+
+  groups[
+    ,
+    commodity_import_share :=
+      data.table::fifelse(
+        is.finite(reporter_total_imports) &
+          reporter_total_imports > 0,
+        reporter_commodity_total / reporter_total_imports,
+        NA_real_
+      )
+  ]
+
+  reporter_year <- groups[
+    ,
+    .(
+      weighted_hhi = sum(
+        commodity_import_share * supplier_hhi,
+        na.rm = TRUE
+      ),
+      weighted_top_1_share = sum(
+        commodity_import_share * top_1_share,
+        na.rm = TRUE
+      )
+    ),
+    by = .(
+      year,
+      reporter_iso3
+    )
+  ]
+
+  reporter_year[
+    ,
+    effective_supplier_count :=
+      data.table::fifelse(
+        is.finite(weighted_hhi) &
+          weighted_hhi > 0,
+        1 / weighted_hhi,
+        NA_real_
+      )
+  ]
+
+  annual_reporter <- reporter_year[
+    ,
+    .(
+      weighted_hhi = mean(weighted_hhi, na.rm = TRUE),
+      weighted_top_1_share = mean(
+        weighted_top_1_share,
+        na.rm = TRUE
+      ),
+      effective_supplier_count = mean(
+        effective_supplier_count,
+        na.rm = TRUE
+      )
+    ),
+    by = year
+  ]
+
+  annual_groups <- groups[
+    ,
+    .(
+      supplier_count = as.integer(
+        round(mean(supplier_count, na.rm = TRUE))
+      ),
+      import_value = sum(
+        reporter_commodity_total,
+        na.rm = TRUE
+      )
+    ),
+    by = year
+  ]
+
+  out <- merge(
+    data.table::data.table(year = years),
+    annual_reporter,
+    by = "year",
+    all.x = TRUE,
+    sort = FALSE
+  )
+
+  out <- merge(
+    out,
+    annual_groups,
+    by = "year",
+    all.x = TRUE,
+    sort = FALSE
+  )
+
+  data.table::setorderv(out, "year")
+
+  out[
+    ,
+    .(
+      year,
+      weighted_hhi,
+      weighted_top_1_share,
+      supplier_count,
+      effective_supplier_count,
+      import_value
+    )
+  ]
 }

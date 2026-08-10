@@ -148,12 +148,28 @@ register_app_web_dependencies <- function(ui, static_root = NULL) {
 }
 
 app_ui <- function(cfg) {
+  style_path <- file.path(
+    cfg$project_root %||% find_project_root(),
+    "www",
+    "styles.css"
+  )
+
+  style_version <- if (file.exists(style_path)) {
+    unname(tools::md5sum(style_path))
+  } else {
+    "1"
+  }
+
   bslib::page_navbar(
     title = cfg$app$name %||% "Global Trade & Supply Chain Explorer",
     id = "main_nav",
     theme = gte_bs_theme(),
     header = shiny::tags$head(
-      shiny::tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
+      shiny::tags$link(
+        rel = "stylesheet",
+        type = "text/css",
+        href = paste0("styles.css?v=", style_version)
+      )
     ),
     bslib::nav_panel("Executive Overview", mod_overview_ui("overview")),
     bslib::nav_panel("Trade Flows", mod_trade_flows_ui("trade_flows")),

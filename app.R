@@ -1,3 +1,19 @@
+# shinyapps.io runtime defaults
+if (identical(Sys.getenv("R_CONFIG_ACTIVE", ""), "shinyapps")) {
+  Sys.setenv(
+    GTSC_RUNTIME_PROFILE = "demo",
+    GTSC_DATA_ROOT = "data/release/demo",
+    GTSC_PREFER_RDS = "true",
+    GTSC_RDS_ROOT = "runtime-rds",
+    GTSC_PUBLIC_MODE = "true",
+    GTSC_ALLOW_SCENARIO_WRITES = "false",
+    GTSC_READ_ONLY_MODE = "true",
+    GTSC_ENABLE_TECHNICAL_DIAGNOSTICS = "false",
+    GTSC_SKIP_RENV_ACTIVATE = "true",
+    GTSC_MATERIALIZE_WEB_DEPS = "false"
+  )
+}
+
 options(shiny.autoload.r = FALSE)
 
 root <- getwd()

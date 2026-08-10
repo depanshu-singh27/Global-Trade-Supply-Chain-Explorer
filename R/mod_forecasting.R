@@ -166,6 +166,16 @@ mod_forecasting_server <- function(id, snap, cfg) {
 
     output$filter_bar <- shiny::renderUI({
       ch <- series_choices()
+
+      manual_model_choices <- forecast_model_choices()
+      prop <- prophet_availability()
+
+      if (!isTRUE(prop$available)) {
+        manual_model_choices <- manual_model_choices[
+          unname(manual_model_choices) != "prophet"
+        ]
+      }
+
       shiny::div(
         class = "filter-toolbar forecast-toolbar",
         shiny::selectInput(ns("series_id"), "Series", choices = ch, selected = if (length(ch)) ch[[1]] else NULL),
@@ -173,7 +183,7 @@ mod_forecasting_server <- function(id, snap, cfg) {
           ns("model_mode"), "Model mode",
           c("Selected model" = "selected", "Manual model" = "manual")
         ),
-        shiny::selectInput(ns("model_id"), "Manual model", forecast_model_choices()),
+        shiny::selectInput(ns("model_id"), "Manual model", manual_model_choices),
         shiny::selectInput(ns("horizon_view"), "Horizon focus", c("1" = 1, "3" = 3, "6" = 6, "12" = 12), selected = 1),
         shiny::selectInput(ns("interval_level"), "Interval", c("80%" = "80", "95%" = "95"), selected = "80"),
         shiny::checkboxInput(ns("show_imputed"), "Show imputed model-input months", TRUE)
@@ -250,7 +260,14 @@ mod_forecasting_server <- function(id, snap, cfg) {
       met <- forecast_snap()$metrics
       mid <- active_model()
       mode_label <- if (identical(input$model_mode, "manual")) "Manual model" else "Selected model"
-      mrow <- if (!is.null(met) && nrow(met)) {
+
+      manual_forecast_unavailable <- identical(input$model_mode, "manual") && (
+        !nrow(fc) ||
+        !("predicted_value_usd" %in% names(fc)) ||
+        !any(is.finite(fc$predicted_value_usd))
+      )
+
+      mrow <- if (!manual_forecast_unavailable && !is.null(met) && nrow(met)) {
         mm <- data.table::as.data.table(met)
         if ("model_id" %in% names(mm)) {
           mm[, model_id := vapply(model_id, normalise_forecast_model_id, character(1))]
@@ -259,21 +276,27 @@ mod_forecasting_server <- function(id, snap, cfg) {
       } else {
         data.table::data.table()
       }
-      mape_txt <- if (nrow(mrow) && is.finite(mrow$mape[1])) {
+      mape_txt <- if (manual_forecast_unavailable) {
+        "Unavailable"
+      } else if (nrow(mrow) && is.finite(mrow$mape[1])) {
         format_forecast_pct(mrow$mape[1])
       } else if (identical(mid, "prophet") && identical(input$model_mode, "manual") && nrow(fc)) {
         "Unavailable — optional full Prophet rolling-origin backtests were not run for this series."
       } else {
         mape_unavailable_message()
       }
-      mase_txt <- if (nrow(mrow) && is.finite(mrow$mase[1])) {
+      mase_txt <- if (manual_forecast_unavailable) {
+        "Unavailable"
+      } else if (nrow(mrow) && is.finite(mrow$mase[1])) {
         format_forecast_metric(mrow$mase[1])
       } else if (identical(mid, "prophet") && identical(input$model_mode, "manual") && nrow(fc)) {
         "Unavailable — optional full Prophet backtests not run"
       } else {
         format_forecast_metric(NA)
       }
-      smape_txt <- if (nrow(mrow) && is.finite(mrow$smape[1])) {
+      smape_txt <- if (manual_forecast_unavailable) {
+        "Unavailable"
+      } else if (nrow(mrow) && is.finite(mrow$smape[1])) {
         format_forecast_pct(mrow$smape[1])
       } else {
         format_forecast_pct(NA)
