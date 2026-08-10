@@ -1,44 +1,72 @@
 # Global Trade & Supply Chain Explorer
 
-> An interactive R Shiny platform for exploring HS Chapter 85 trade, bilateral commodity flows, network structure, import concentration, deterministic supply-chain shocks, and fixture-labelled monthly forecasting.
+> An interactive R Shiny platform for exploring global HS Chapter 85 trade, bilateral commodity flows, trade networks, import concentration, deterministic supply-chain shocks, and monthly forecasting workflows.
 
 ## Overview
 
-The **Global Trade & Supply Chain Explorer** is a modular analytics application built with **R and Shiny**. It combines global country-year trade totals with a selected bilateral HS4 analytical universe, enriches the data with World Bank indicators, and presents the results through nine interactive modules.
+The **Global Trade & Supply Chain Explorer** is a modular analytics platform built with **R and Shiny** for exploring international trade patterns, bilateral commodity relationships, supply-chain dependencies, network structure, and disruption scenarios.
 
-The application supports executive-level trade analysis, bilateral flow exploration, trade-balance mapping, commodity time series, network centrality, import-dependency diagnostics, and deterministic supplier-shock scenarios. Its forecasting architecture supports naïve, ETS, ARIMA, and optional Prophet workflows; the current public/demo forecasting path is explicitly labelled as synthetic fixture data rather than live production forecasting.
+The application combines global country-year HS Chapter 85 trade totals with a selected bilateral HS4 analytical universe, enriches the data with World Bank macroeconomic indicators, and exposes the results through nine interactive analytical modules.
 
-This repository is best described as a **portfolio-grade release candidate**: analytically substantial, modular, tested, containerised, and designed for offline/public demo deployment, while retaining clear limitations around bilateral scope, forecast data, hosting resources, and scenario interpretation.
+It supports:
+
+- Executive-level trade analysis
+- Bilateral trade-flow exploration
+- Trade-balance mapping
+- Commodity and country time-series analysis
+- Trade-network centrality analysis
+- Import-dependency diagnostics
+- Deterministic supplier-shock simulation
+- Monthly forecasting workflows
+- Data-quality and pipeline diagnostics
+
+The public deployment operates from processed local data in a **read-only runtime profile** and does not require live UN Comtrade or World Bank API access during a user session.
+
+---
 
 ## Highlights
 
-- **Nine-module Shiny application** covering overview, flows, map, time series, network, dependency, shocks, forecasting, and data quality.
-- **Global HS-85 country analytics** covering 177 economies from 2019–2024.
-- **Selected bilateral HS4 universe** with 87,609 enriched detailed records across 20 reporters, 20 partners, and 20 HS4 categories.
-- **Interactive visualisation stack** using Plotly, Leaflet, networkD3, DT, and igraph.
-- **Deterministic shock simulation** with supplier substitution, residual unmet-import accounting, and optional propagation.
-- **Reproducible engineering workflow** with `renv`, automated tests, CI workflows, and a non-root Docker runtime.
+- **Nine-module interactive Shiny application**
+- **177 economies** represented in global HS-85 analytics
+- **2019–2024** analytical coverage
+- **87,609 bilateral HS4 observations**
+- Selected analytical universe spanning **20 reporters × 20 partners × 20 HS4 categories**
+- Interactive **Sankey diagrams, choropleths, time-series charts, treemaps, network graphs, heatmaps, rankings, and tables**
+- Directed trade-network analysis using **PageRank, degree, strength, and betweenness**
+- Supplier-concentration analysis using **HHI, top-supplier shares, and effective supplier counts**
+- Deterministic shock simulation with **supplier substitution and residual unmet-import accounting**
+- Forecasting using **Seasonal Naïve, Naïve, Drift, ETS, and ARIMA**
+- Reproducible environment management using **renv**
+- Automated testing with **testthat**
+- CI workflows through **GitHub Actions**
+- Docker-based release validation
+- Public deployment through **shinyapps.io**
+- Dependency-trend calculation optimised from approximately **3.54 seconds to 0.10 seconds** in local validation for the tested 2019–2024 workflow
 
-## Application Modules
+---
+
+# Application Modules
 
 | Module | What it provides |
 |---|---|
-| **Executive Overview** | Country-year KPIs, trade rankings, composition views, balances, macro comparisons, and downloads. |
-| **Trade Flows** | Bilateral HS4 filtering, Sankey diagrams, composition views, time series, reporter-partner matrices, and CSV exports. |
-| **Trade Balance Map** | Leaflet choropleths of country-level trade totals and balances, rankings, profiles, and trend views. |
-| **Time Series & Commodity Analysis** | Global, single-economy, comparison, and detailed scopes with YoY growth, index transforms, movers, treemaps, and tables. |
-| **Trade Network** | Directed trade graphs, PageRank and other centrality measures, corridor analysis, diagnostics, and GraphML/CSV downloads. |
-| **Dependency Explorer** | Supplier concentration, HHI, top-supplier shares, effective supplier counts, heatmaps, rankings, and trends. |
-| **Shock Simulator** | Supplier shock configuration, substitution, residual exposure, optional propagation, impact rankings, maps, and downloads. |
-| **Forecasting** | Model comparison, backtests, residual diagnostics, point forecasts, and 80%/95% intervals using fixture-labelled monthly data. |
-| **Data Quality** | Pipeline status, validation outputs, coverage summaries, and performance notices. |
+| **Executive Overview** | Country-year KPIs, trade rankings, trade composition, balances, macroeconomic comparisons, and downloads |
+| **Trade Flows** | Bilateral HS4 filtering, Sankey diagrams, composition views, time series, reporter-partner matrices, and CSV exports |
+| **Trade Balance Map** | Interactive Leaflet choropleths of country-level trade totals and balances, rankings, profiles, and trend views |
+| **Time Series & Commodity Analysis** | Global, single-economy, comparison, and detailed scopes with YoY growth, indexed series, commodity movers, treemaps, and tables |
+| **Trade Network** | Directed trade graphs, PageRank and other centrality measures, corridor analysis, diagnostics, and GraphML/CSV downloads |
+| **Dependency Explorer** | Supplier concentration, HHI, top-supplier shares, effective supplier counts, heatmaps, rankings, and historical trends |
+| **Shock Simulator** | Supplier-shock configuration, substitution, residual exposure, optional propagation, impact rankings, maps, and downloads |
+| **Forecasting** | Model comparison, residual diagnostics, point forecasts, and 80%/95% prediction intervals using fixture-labelled monthly data |
+| **Data Quality** | Pipeline status, validation outputs, analytical coverage summaries, and performance notices |
 
-## Data Coverage
+---
 
-### Verified Local Analytical Snapshot
+# Data Coverage
+
+## Verified Analytical Snapshot
 
 | Layer | Coverage | Records |
-|---|---:|---:|
+|---|---|---:|
 | Global enriched HS-85 trade | 177 economies, 2019–2024 | 1,955 |
 | Country-year analytical table | 177 economies | 981 |
 | Detailed bilateral HS4 cube | 20 reporters × 20 partners × 20 HS4 categories, 2019–2024 | 87,609 |
@@ -46,86 +74,67 @@ This repository is best described as a **portfolio-grade release candidate**: an
 | WDI long table | Production analytical universe | 4,200 |
 | Monthly forecasting table | Fixture/live pipeline context | 864 |
 
-### Data Sources
+---
 
-- **UN Comtrade** — annual HS trade ingestion and monthly pipeline architecture.
-- **World Bank World Development Indicators** — GDP, population, CPI, and macroeconomic context.
-- **Natural Earth** — simplified world geometries used by the map module.
-- **Local Parquet and JSON bundles** — offline application runtime and public/demo deployment.
+# Data Sources
 
-The running Shiny application uses processed local data and does **not** require live Comtrade or WDI API access during a user session.
+### UN Comtrade
 
-## Architecture
+Used for annual Harmonized System trade data and the project's monthly trade-ingestion architecture.
 
-```mermaid
-flowchart TB
-  subgraph ingestion[Offline ingestion and preparation]
-    CT[UN Comtrade API]
-    WDI[World Bank WDI API]
-    PIPE[R pipeline scripts]
-    CT --> PIPE
-    WDI --> PIPE
-    PIPE --> PROC[Processed Parquet and JSON artefacts]
-  end
+### World Bank World Development Indicators
 
-  subgraph packaging[Release packaging]
-    PROC --> DEMO[Validated demo bundle]
-    PROC --> RELEASE[Release bundle]
-  end
+Used to enrich the trade dataset with macroeconomic variables including:
 
-  subgraph runtime[Shiny runtime]
-    APP[app.R]
-    UI[app_ui: nine navigation modules]
-    SERVER[app_server]
-    SNAPSHOT[Immutable processed-data snapshot]
+- GDP
+- Population
+- Consumer Price Index
+- Related country-level indicators
 
-    APP --> UI
-    APP --> SERVER
-    SERVER --> SNAPSHOT
-    DEMO --> SNAPSHOT
-    PROC --> SNAPSHOT
+### Natural Earth
 
-    SNAPSHOT --> OVERVIEW[Overview]
-    SNAPSHOT --> FLOWS[Trade Flows]
-    SNAPSHOT --> MAP[Trade Balance Map]
-    SNAPSHOT --> TS[Time Series]
-    SNAPSHOT --> NETWORK[Trade Network]
-    SNAPSHOT --> DEP[Dependency]
-    SNAPSHOT --> SHOCK[Shock Simulator]
-    SNAPSHOT --> FORECAST[Forecasting]
-    SNAPSHOT --> QUALITY[Data Quality]
-  end
+Used for simplified world geometries powering the interactive geographical modules.
 
-  subgraph deployment[Container deployment]
-    DOCKER[Multi-stage Docker build]
-    ENTRY[Entrypoint validation]
-    HEALTH[Health endpoint]
-    DOCKER --> ENTRY --> APP
-    ENTRY --> HEALTH
-  end
-```
+### Local Analytical Bundles
 
-### Runtime Design
+Processed **Parquet, RDS, and JSON** artefacts support offline analysis and the public deployment runtime.
+
+The deployed application does **not** call UN Comtrade or World Bank APIs while a user is interacting with the dashboard.
+
+---
+
+# Architecture
+
+## Runtime Design
+
+The application follows a modular offline-processing and interactive-analysis architecture.
 
 1. Offline ingestion scripts retrieve and standardise Comtrade and WDI data.
-2. Processed artefacts are written as Parquet and JSON files.
-3. `app.R` loads configuration, sources the R modules, and starts Shiny.
-4. `app_server()` loads one processed-data snapshot and shares it across all modules.
-5. Runtime profiles control demo, public, read-only, diagnostic, and scenario-write behaviour.
-6. Docker validates the release bundle before starting the Shiny process.
+2. Data-processing pipelines validate and transform the raw observations.
+3. Processed analytical artefacts are written to local storage.
+4. `app.R` loads configuration and application dependencies.
+5. The central server loads a processed analytical snapshot.
+6. The same snapshot is shared across the individual Shiny modules.
+7. Runtime profiles control demo, public, read-only, diagnostics, and scenario-write behaviour.
+8. Docker is used to validate release bundles before deployment.
+9. The public shinyapps.io deployment uses an **RDS-preferred runtime path** for efficient startup.
 
-## Technology Stack
+---
 
-### Language and Application Framework
+# Technology Stack
 
-- R 4.6.1 recommended
+## Language and Application Framework
+
+- R
 - Shiny
 - bslib
 
-### Data Engineering
+## Data Engineering
 
 - data.table
-- arrow / Parquet
+- arrow
+- Parquet
+- RDS
 - fst
 - jsonlite
 - yaml
@@ -133,58 +142,73 @@ flowchart TB
 - memoise
 - cachem
 
-### Visualisation and Analysis
+## Visualisation and Analytics
 
 - Plotly
 - Leaflet
-- networkD3 for Sankey diagrams
+- networkD3
 - DT
 - igraph
 - sf
 - rnaturalearth
 
-### Forecasting
+## Forecasting
 
 - forecast
-- Optional Prophet integration
+- Seasonal Naïve
+- Naïve
+- Drift
+- ETS
+- ARIMA via `forecast::auto.arima()`
 
-### Quality and Deployment
+The codebase also contains an optional Prophet integration path. Prophet is **not exposed in the current public hosted application** because its required package/runtime stack is not included in the shinyapps.io deployment.
+
+## Testing and Deployment
 
 - testthat
 - renv
 - Docker
 - tini
 - GitHub Actions
+- shinyapps.io
 
-## Analytical Methods
+---
 
-### Trade Balance
+# Analytical Methods
+
+## Trade Balance
 
 \[
 \text{Trade Balance} = \text{Exports} - \text{Imports}
 \]
 
-### Year-on-Year Growth
+A positive value represents a trade surplus, while a negative value represents a trade deficit.
 
-For consecutive valid years with a non-zero prior value:
+---
+
+## Year-on-Year Growth
+
+For consecutive valid years with a non-zero prior observation:
 
 \[
-\text{YoY Growth}_{t}
-=
+\text{YoY Growth}_t =
 \frac{x_t - x_{t-1}}{x_{t-1}} \times 100
 \]
 
-### Indexed Series
+---
+
+## Indexed Series
 
 \[
-\text{Index}_{t}
-=
-100 \times \frac{x_t}{x_{baseline}}
+\text{Index}_t =
+100 \times \frac{x_t}{x_{\text{baseline}}}
 \]
 
-The baseline is the first valid positive observation in the selected period.
+The baseline is the first valid positive observation within the selected analytical period.
 
-### Supplier Concentration
+---
+
+## Supplier Concentration
 
 For supplier shares \(s_i\):
 
@@ -192,72 +216,188 @@ For supplier shares \(s_i\):
 \text{HHI} = \sum_i s_i^2
 \]
 
+The effective number of suppliers is calculated as:
+
 \[
-\text{Effective Suppliers} = \frac{1}{\text{HHI}}
+\text{Effective Suppliers} =
+\frac{1}{\text{HHI}}
 \]
 
-The dependency module also reports top-one and top-three supplier shares.
+The Dependency Explorer additionally reports:
 
-### Network Analysis
+- Largest supplier share
+- Top-three supplier share
+- Supplier count
+- Effective supplier count
+- Import concentration rankings
+- Historical dependency trends
 
-The application constructs a directed graph from filtered bilateral trade observations and calculates graph measures such as degree, strength, PageRank, and betweenness.
+---
 
-These metrics describe the **available filtered observation graph**, not a complete global firm-level supply network.
+# Trade Network Analysis
 
-## Shock-Simulation Engine
+Filtered bilateral trade observations are represented as a **directed weighted graph**.
 
-The shock engine is deterministic and scenario-based.
+Nodes represent economies and edges represent observed bilateral trade relationships.
 
-1. **Build the baseline** from observed bilateral import relationships.
-2. **Select targets** such as suppliers, reporters, commodities, years, and shock magnitude.
-3. **Apply the direct shock** by reducing targeted supplier edges.
-4. **Allocate substitution** using proportional or capacity-constrained logic.
-5. **Calculate residual exposure** as disrupted imports that cannot be reallocated.
-6. **Optionally propagate** residual effects through additional steps.
-7. **Aggregate results** by reporter, supplier, commodity, and scenario.
-8. **Present outputs** through rankings, charts, maps, diagnostics, and downloads.
+The application calculates network metrics including:
 
-The outputs represent **scenario sensitivities and residual unmet imports**. They should not be interpreted as forecasts of realised GDP loss, company failure, or macroeconomic damage.
+- In-degree
+- Out-degree
+- Weighted strength
+- PageRank
+- Betweenness centrality
+- Trade-corridor values
 
-## Forecasting
+These measures describe the **available filtered observation network** and should not be interpreted as a complete global firm-level supply network.
 
-The forecasting architecture includes:
+---
 
-- Seasonal naïve
+# Shock Simulation Engine
+
+The Shock Simulator provides a deterministic framework for analysing potential supplier disruptions.
+
+## Workflow
+
+1. **Build the baseline**
+
+   Observed bilateral import relationships are transformed into the initial dependency structure.
+
+2. **Select shock parameters**
+
+   Users configure:
+
+   - Supplier
+   - Reporter
+   - Commodity
+   - Year
+   - Shock magnitude
+
+3. **Apply the direct shock**
+
+   Targeted supplier edges are reduced according to the selected shock percentage.
+
+4. **Allocate substitution**
+
+   Alternative suppliers absorb disrupted trade using proportional or capacity-constrained allocation rules.
+
+5. **Calculate residual exposure**
+
+   Any disrupted imports that cannot be reallocated are recorded as residual unmet imports.
+
+6. **Optional propagation**
+
+   Residual effects can be propagated through additional analytical steps.
+
+7. **Aggregate results**
+
+   Impacts are summarised by:
+
+   - Reporter
+   - Supplier
+   - Commodity
+   - Scenario
+
+8. **Visualise outputs**
+
+   Results are presented using:
+
+   - Rankings
+   - Charts
+   - Maps
+   - Tables
+   - Diagnostics
+   - Downloads
+
+## Interpretation
+
+Shock-simulation outputs represent **scenario sensitivities and residual unmet imports**.
+
+They should not be interpreted as forecasts of:
+
+- Realised GDP loss
+- Company failure
+- Market collapse
+- Macroeconomic damage
+
+The model is designed for comparative analytical exploration rather than causal economic prediction.
+
+---
+
+# Forecasting
+
+The forecasting module supports:
+
+- Seasonal Naïve
 - Naïve
 - Drift
 - ETS
-- ARIMA via `forecast::auto.arima()`
-- Optional Prophet when available
+- ARIMA
 
-Models can return point forecasts with 80% and 95% intervals.
+Models can return:
 
-The current demo/public forecasting profile uses **synthetic monthly fixtures**, and live monthly production successes are currently recorded as zero. Forecast outputs should therefore be presented as a demonstration of the forecasting pipeline and interface, not as live trade predictions.
+- Point forecasts
+- 80% prediction intervals
+- 95% prediction intervals
+- Residual diagnostics
+- Historical comparison views
+- Backtest metrics where available
 
-## Performance
+The public/demo forecasting profile currently uses **synthetic monthly fixture data**.
 
-The repository contains a server-side Phase 13 benchmark harness. The available benchmark artefacts were produced on an earlier detailed tier of approximately 21,931 records, so they should not be assumed to represent the current 87,609-row cube without re-running the suite.
+Forecast results should therefore be interpreted as a demonstration of the forecasting architecture and interface rather than live production trade predictions.
 
-| Operation | Recorded result |
+An optional Prophet implementation remains within the broader codebase, but Prophet is not included in the current public shinyapps.io runtime.
+
+---
+
+# Performance
+
+The repository contains a dedicated server-side benchmark framework.
+
+Some historical benchmark artefacts were generated against an earlier detailed dataset containing approximately 21,931 bilateral records. These values should therefore not automatically be treated as benchmarks for the current 87,609-record analytical cube without re-running the full performance suite.
+
+| Operation | Recorded Result |
 |---|---:|
-| Overview year aggregation | Approximately 10 ms median |
-| Trade-flow filtering and Sankey preparation | Approximately 50–60 ms median |
-| Network construction and PageRank | Approximately 60–80 ms median |
-| Cold snapshot load | Approximately 505–610 ms p95 |
-| Shock simulation without persistence | Approximately 567–574 ms p95 |
+| Overview year aggregation | ~10 ms median |
+| Trade-flow filtering and Sankey preparation | ~50–60 ms median |
+| Network construction and PageRank | ~60–80 ms median |
+| Cold analytical snapshot load | ~505–610 ms p95 |
+| Shock simulation without persistence | ~567–574 ms p95 |
+| Dependency trend calculation | ~3.54 s → ~0.10 s after optimisation |
 
-The repository does **not** support an under-250 ms shock-simulation claim, and browser page-load timing was not verified by the audited benchmark harness.
+The project does **not** claim sub-250 ms shock simulation performance.
 
-## Testing and Quality Assurance
+Browser-level end-to-end performance has not yet been established through the benchmark harness.
+
+---
+
+# Testing and Quality Assurance
 
 The project includes:
 
 - **66 `testthat` files**
 - **317 `test_that()` blocks**
-- Unit and integration coverage across data access, overview, flows, maps, time series, network analysis, dependencies, shocks, forecasting, runtime profiles, release packaging, performance, and container behaviour
-- GitHub Actions workflows for R tests, container builds, and security scanning
+- Unit and integration coverage across:
+  - Data access
+  - Executive Overview
+  - Trade Flows
+  - Mapping
+  - Time Series
+  - Network analysis
+  - Dependency calculations
+  - Shock simulation
+  - Forecasting
+  - Runtime profiles
+  - Release packaging
+  - Performance
+  - Container behaviour
 
-Run the offline test suite with:
+The repository also includes GitHub Actions workflows for automated testing, container builds, and security-oriented checks.
+
+The exact public deployment bundle is additionally smoke-tested locally using Docker before redeployment.
+
+## Running Tests
 
 ```bash
 Rscript -e "renv::status()"
@@ -265,74 +405,150 @@ Rscript -e "testthat::test_dir('tests/testthat', reporter='summary')"
 Rscript -e "source('app.R'); cat('APP_SOURCE_OK\n')"
 ```
 
-## Render Deployment
+---
 
-## Security and Public-Deployment Safeguards
+# Security and Public Deployment Safeguards
 
-- Runs as a non-root `gtsc` user.
-- Refuses to start as root.
-- Rejects `.Renviron` files inside the image.
-- Removes the Comtrade API key from the public runtime.
-- Defaults to public, read-only mode.
-- Disables scenario persistence by default.
-- Disables technical diagnostics by default.
-- Uses a dedicated static health endpoint.
-- Keeps secrets and generated raw data out of version control through `.gitignore`.
+The project includes several safeguards for public deployment:
 
-## Repository Structure
+- Docker runtime executes as a non-root `gtsc` user
+- Container startup refuses root execution
+- `.Renviron` files are rejected from the container image
+- The Comtrade API key is not required by the public runtime
+- Public runtime defaults to read-only mode
+- Scenario persistence is disabled by default
+- Technical diagnostics are disabled by default
+- Dedicated health-check support exists for container deployments
+- Secrets are excluded from version control
+- Generated deployment artefacts are excluded from version control
+- Runtime data bundles are excluded from version control
+
+---
+
+# Repository Structure
 
 ```text
 .
-├── app.R                    # Application entry point
-├── R/                       # Shiny modules, analytics, pipelines, runtime helpers
-├── www/                     # CSS and health-check resource
+├── app.R
+│   └── Main Shiny application entry point
+│
+├── R/
+│   └── Shiny modules, analytics, forecasting, pipelines, and runtime helpers
+│
+├── www/
+│   └── CSS and static application resources
+│
 ├── data/
-│   ├── processed/           # Local analytical artefacts
-│   ├── release/demo/        # Public demo bundle
-│   ├── scenarios/           # Example and generated shock scenarios
-│   └── performance/         # Benchmark fixtures, results, and reports
-├── docker/                  # Entrypoint and health-check scripts
-├── scripts/                 # Ingestion, processing, benchmark, and release scripts
-├── tests/testthat/          # Automated test suite
-├── config.yml               # Application and data configuration
-├── DESCRIPTION              # R package metadata
-├── renv.lock                # Locked package environment
-├── Dockerfile               # Multi-stage container build
-└── .github/workflows/       # CI workflows
+│   ├── processed/
+│   │   └── Local analytical artefacts
+│   │
+│   ├── release/demo/
+│   │   └── Public demo dataset
+│   │
+│   ├── scenarios/
+│   │   └── Example and generated shock scenarios
+│   │
+│   └── performance/
+│       └── Benchmark fixtures, reports, and results
+│
+├── docker/
+│   └── Container entrypoint and health-check scripts
+│
+├── scripts/
+│   └── Ingestion, processing, benchmark, and release scripts
+│
+├── tests/testthat/
+│   └── Automated unit and integration tests
+│
+├── config.yml
+│   └── Application and data configuration
+│
+├── DESCRIPTION
+│   └── R project metadata
+│
+├── renv.lock
+│   └── Reproducible R package environment
+│
+├── Dockerfile
+│   └── Container build definition
+│
+└── .github/workflows/
+    └── Continuous-integration workflows
 ```
 
-## Known Limitations
+Local deployment-only directories such as:
 
-### Data Scope
+```text
+runtime-rds/
+shinyapps-deploy/
+```
 
-- Bilateral analysis covers a selected 20-reporter, 20-partner, 20-HS4 universe rather than complete global bilateral trade.
-- The project focuses on HS Chapter 85.
-- Direct dependency metrics do not represent firm-level, input-output, or causal supply-chain relationships.
+are intentionally excluded from Git.
 
-### Forecasting
+---
 
-- The current public/demo path uses synthetic fixtures.
-- Live monthly production forecasts have not yet been established.
-- Prophet availability depends on the installed package and system environment.
+# Known Limitations
 
-### Scenario Modelling
+## Data Scope
 
-- Shock results are deterministic sensitivities, not realised-loss predictions.
-- Substitution and propagation rules are analytical assumptions rather than behavioural forecasts.
+- Bilateral analysis covers a selected **20-reporter × 20-partner × 20-HS4** analytical universe rather than complete global bilateral trade.
+- The project focuses specifically on **HS Chapter 85**.
+- Dependency metrics represent observed trade relationships rather than firm-level supply-chain relationships.
+- The model does not include a full global input-output framework.
 
-### Reproducibility and Documentation
+## Forecasting
 
-- Large processed artefacts are normally excluded from Git.
-- Existing documentation may contain stale references to an earlier partial 6-of-20 reporter state.
-- Version labels currently differ across `DESCRIPTION`, runtime constants, and final-audit artefacts.
-- Existing performance results should be re-run against the current 87,609-row detailed dataset.
+- The current public forecasting profile uses synthetic monthly fixture data.
+- A validated live monthly production forecasting pipeline has not yet been established.
+- Prophet is not included in the current public hosted deployment.
 
-## Roadmap
+## Scenario Modelling
 
-- Include and validate a safe public demo bundle for one-click Docker and Render deployment.
-- Re-run performance benchmarks against the current detailed dataset.
-- Unify application version strings.
-- Refresh stale coverage wording across project documentation.
-- Add a dedicated Help and Methodology page.
-- Enable a live monthly forecast path when data and quota constraints permit.
-- Add automated browser-level performance and end-to-end interaction testing.
+- Shock outputs represent deterministic analytical sensitivities.
+- Results should not be treated as realised-loss forecasts.
+- Supplier substitution rules are analytical assumptions.
+- Propagation logic does not represent a complete economic equilibrium model.
+
+## Performance and Reproducibility
+
+- Some historical benchmark artefacts were generated on an earlier, smaller detailed dataset.
+- Large processed and runtime artefacts are intentionally excluded from Git.
+- Full browser-level end-to-end performance has not yet been benchmarked.
+
+---
+
+# Roadmap
+
+Potential future extensions include:
+
+- Replace fixture-based monthly forecasting with a validated live monthly production pipeline
+- Re-run the complete performance benchmark suite against the current 87,609-row detailed dataset
+- Expand bilateral coverage beyond the selected 20 × 20 × 20 analytical universe
+- Extend analysis beyond HS Chapter 85
+- Add a dedicated Help and Methodology section
+- Add automated browser-level end-to-end testing
+- Add automated browser-level performance benchmarking
+- Extend supply-chain propagation modelling
+- Explore additional macroeconomic and sector-level enrichment layers
+
+---
+
+# Purpose
+
+This project was built to demonstrate an end-to-end analytical workflow combining:
+
+- Data engineering
+- International trade analytics
+- Supply-chain risk analysis
+- Network science
+- Time-series forecasting
+- Interactive data visualisation
+- Scenario modelling
+- Reproducible software engineering
+- Testing
+- Containerisation
+- Public application deployment
+
+The objective is not only to visualise trade data, but to provide an integrated analytical environment for exploring how global trade relationships, supplier concentration, and potential disruptions interact.
+
+---
